@@ -3,165 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEON VOID</title>
+<title>S0l0pp | Interface</title>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: 'Orbitron', sans-serif;
-        background: black;
-        color: #00f7ff;
-        overflow-x: hidden;
-    }
+html, body {
+    overflow-x: hidden;
+}
 
-    /* Animated Background */
-    body::before {
-        content: "";
-        position: fixed;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at center, #001f3f 0%, #000000 70%);
-        animation: rotateBg 20s linear infinite;
-        z-index: -1;
-    }
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(180deg, #050510, #000000);
+    color: #00eaff;
+    text-align: center;
+}
 
-    @keyframes rotateBg {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
+/* Subtle animated grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,234,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,234,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
 
-    header {
-        text-align: center;
-        padding: 40px 20px;
-    }
+@keyframes gridMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(50px); }
+}
 
-    h1 {
-        font-size: 3rem;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        animation: glitch 1.5s infinite;
-    }
+header {
+    padding: 100px 20px 60px;
+}
 
-    @keyframes glitch {
-        0% { text-shadow: 2px 2px #ff00ff; }
-        25% { text-shadow: -2px -2px #00ffff; }
-        50% { text-shadow: 2px -2px #ff00ff; }
-        75% { text-shadow: -2px 2px #00ffff; }
-        100% { text-shadow: 2px 2px #ff00ff; }
-    }
+h1 {
+    font-size: 4rem;
+    letter-spacing: 8px;
+    text-shadow: 0 0 20px #00eaff;
+}
 
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 20px;
-    }
+.subtitle {
+    margin-top: 15px;
+    opacity: 0.6;
+}
 
-    nav a {
-        color: #00f7ff;
-        text-decoration: none;
-        border: 1px solid #00f7ff;
-        padding: 10px 20px;
-        transition: 0.3s;
-    }
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 80px 20px;
+}
 
-    nav a:hover {
-        background: #00f7ff;
-        color: black;
-        box-shadow: 0 0 15px #00f7ff;
-    }
+.card {
+    border: 1px solid #00eaff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    margin-top: 30px;
+    transition: 0.3s ease;
+}
 
-    section {
-        padding: 100px 20px;
-        text-align: center;
-    }
+.card:hover {
+    box-shadow: 0 0 30px #00eaff;
+    transform: translateY(-6px);
+}
 
-    .card {
-        border: 1px solid #00f7ff;
-        padding: 30px;
-        margin: 20px auto;
-        width: 80%;
-        max-width: 600px;
-        transition: 0.4s;
-        background: rgba(0, 0, 0, 0.7);
-    }
+h2 {
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00eaff;
+}
 
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px #00f7ff;
-    }
+button {
+    margin-top: 25px;
+    padding: 12px 35px;
+    background: transparent;
+    border: 1px solid #00eaff;
+    color: #00eaff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-    button {
-        margin-top: 20px;
-        padding: 10px 25px;
-        background: transparent;
-        border: 1px solid #00f7ff;
-        color: #00f7ff;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+button:hover {
+    background: #00eaff;
+    color: black;
+    box-shadow: 0 0 25px #00eaff;
+}
 
-    button:hover {
-        background: #00f7ff;
-        color: black;
-        box-shadow: 0 0 15px #00f7ff;
-    }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        border-top: 1px solid #00f7ff;
-        margin-top: 50px;
-    }
+footer {
+    padding: 40px 20px;
+    border-top: 1px solid #00eaff;
+    opacity: 0.5;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>NEON VOID</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#systems">Systems</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <h1>S0l0pp</h1>
+    <p class="subtitle">Independent. Focused. Evolving.</p>
 </header>
 
-<section id="about">
-    <h2>ENTER THE FUTURE</h2>
+<section>
+    <h2>IDENTITY</h2>
     <div class="card">
-        <p>Welcome to the digital frontier. A cyberpunk-inspired interface built for the next generation of explorers.</p>
-        <button onclick="alert('Initializing Quantum Protocol...')">Initialize</button>
+        <p>
+            15 years old. Self-built. No dependence.
+            Improving body, mind, and skill.
+            Long-term vision > short-term dopamine.
+        </p>
     </div>
 </section>
 
-<section id="systems">
-    <h2>CORE SYSTEMS</h2>
+<section>
+    <h2>BUILDING</h2>
     <div class="card">
-        <p>⚡ Quantum AI Engine</p>
-        <p>🌌 Deep Space Navigation</p>
-        <p>🔐 Neural Network Security</p>
+        <p>⚡ Coding & System Design</p>
+        <p>🏋️ Physical Discipline</p>
+        <p>📈 Long-Term Wealth Strategy</p>
+        <p>🎮 Creative Projects</p>
+        <button onclick="alert('Progress Increasing...')">
+            Check Progress
+        </button>
     </div>
 </section>
 
-<section id="contact">
-    <h2>TRANSMISSION</h2>
+<section>
+    <h2>MISSION</h2>
     <div class="card">
-        <p>Signal us across the void.</p>
-        <button onclick="alert('Signal Sent Successfully.')">Send Signal</button>
+        <p>
+            Control impulses.  
+            Build consistency.  
+            Become dangerous in silence.
+        </p>
     </div>
 </section>
 
 <footer>
-    <p>© 2099 NEON VOID | All Systems Operational</p>
+    <p>© 2026 S0l0pp | Private System</p>
 </footer>
 
 </body>
