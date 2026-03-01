@@ -17,29 +17,22 @@
 body {
     font-family: 'Orbitron', sans-serif;
     background: #000;
-    color: white;
+    color: #00eaff;
     overflow-x: hidden;
 }
 
-/* Hide default scrollbar */
-::-webkit-scrollbar {
-    width: 0;
-}
-
-/* Custom Scroll Indicator */
+::-webkit-scrollbar { width: 0; }
 #scrollIndicator {
     position: fixed;
     right: 15px;
     top: 0;
     width: 4px;
-    height: 0%;
     background: #00eaff;
     box-shadow: 0 0 15px #00eaff;
     z-index: 1000;
     transition: height 0.1s;
 }
 
-/* Animated Background Canvas */
 canvas {
     position: fixed;
     top: 0;
@@ -47,7 +40,6 @@ canvas {
     z-index: -1;
 }
 
-/* Layout */
 section {
     min-height: 100vh;
     display: flex;
@@ -59,7 +51,6 @@ section {
     transform: translateY(40px);
     transition: all 1s ease;
 }
-
 section.show {
     opacity: 1;
     transform: translateY(0);
@@ -71,24 +62,41 @@ h1 {
     text-shadow: 0 0 20px #00eaff;
 }
 
-.links {
-    margin-top: 40px;
+p.bio {
+    max-width: 650px;
+    margin-top: 20px;
+    line-height: 1.5;
+    color: #80ffff;
 }
 
 .links a {
-    display: inline-block;
-    margin: 10px;
+    margin: 15px;
     padding: 12px 30px;
     border: 1px solid #00eaff;
     text-decoration: none;
     color: #00eaff;
     transition: 0.3s ease;
 }
-
 .links a:hover {
     background: #00eaff;
     color: black;
     box-shadow: 0 0 25px #00eaff;
+}
+
+.card {
+    border: 1px solid #00eaff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px 40px;
+    margin-top: 30px;
+    transition: 0.3s ease;
+}
+.card:hover {
+    box-shadow: 0 0 30px #00eaff;
+    transform: translateY(-6px);
+}
+h2 {
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00eaff;
 }
 </style>
 </head>
@@ -99,23 +107,37 @@ h1 {
 
 <section>
     <h1>S0l0pp</h1>
+    <p class="bio">
+        Rome, Italy. Gamer, strategist, and digital tactician.  
+        Level 14 with a focus on War Thunder and Left 4 Dead 2 — mastering combat and tactics in every session.  
+        Achievements collected, hours tracked, and progression always monitored.  
+        A digital presence built for precision, skill, and dominance.
+    </p>
     <div class="links">
-        <a href="https://steamcommunity.com/id/S0l0pp/" target="_blank">Steam</a>
-        <a href="https://github.com/" target="_blank">GitHub</a>
-        <a href="#">Discord: italiannationalist</a>
+        <a href="https://steamcommunity.com/id/S0l0pp/" target="_blank">Steam Profile</a>
+        <a href="https://github.com/S0l0pp" target="_blank">GitHub</a>
     </div>
 </section>
 
 <section>
-    <h2>Digital Presence</h2>
+    <h2>Top Games</h2>
+    <div class="card">
+        <p>⚔️ War Thunder — 341 hours, 31 achievements</p>
+        <p>🧟 Left 4 Dead 2 — 99 hours, 49 achievements</p>
+        <p>🌱 Plants vs Zombies GOTY — 6 hours, 5 achievements</p>
+    </div>
 </section>
 
 <section>
-    <h2>Projects</h2>
+    <h2>Online Presence</h2>
+    <div class="card">
+        <p>Steam Level: 14</p>
+        <p>Groups: Goon Group 89</p>
+        <p>Friends: 85</p>
+    </div>
 </section>
 
 <script>
-/* Scroll Indicator */
 window.onscroll = function() {
     let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -123,57 +145,43 @@ window.onscroll = function() {
     document.getElementById("scrollIndicator").style.height = scrolled + "%";
 };
 
-/* Fade-in animation */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("show");
     });
 });
 sections.forEach(section => observer.observe(section));
 
-/* Animated Particle Background */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let particles = [];
-
-for (let i = 0; i < 120; i++) {
+for (let i = 0; i < 140; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5
+        speedX: (Math.random() - 0.5) * 0.6,
+        speedY: (Math.random() - 0.5) * 0.6
     });
 }
-
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#00eaff";
-
     particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
-
         if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
         if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
     });
-
     requestAnimationFrame(animate);
 }
-
 animate();
-
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
