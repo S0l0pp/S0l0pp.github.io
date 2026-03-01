@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S0l0pp | Interface</title>
+<title>S0l0pp</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
@@ -14,143 +14,171 @@
     box-sizing: border-box;
 }
 
-html, body {
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #000;
+    color: white;
     overflow-x: hidden;
 }
 
-body {
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(180deg, #050510, #000000);
-    color: #00eaff;
-    text-align: center;
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+    width: 0;
 }
 
-/* Subtle animated grid */
-body::before {
-    content: "";
+/* Custom Scroll Indicator */
+#scrollIndicator {
     position: fixed;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(0,234,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,234,255,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+    right: 15px;
+    top: 0;
+    width: 4px;
+    height: 0%;
+    background: #00eaff;
+    box-shadow: 0 0 15px #00eaff;
+    z-index: 1000;
+    transition: height 0.1s;
+}
+
+/* Animated Background Canvas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
-    animation: gridMove 20s linear infinite;
 }
 
-@keyframes gridMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(50px); }
+/* Layout */
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
 }
 
-header {
-    padding: 100px 20px 60px;
+section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h1 {
     font-size: 4rem;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-shadow: 0 0 20px #00eaff;
 }
 
-.subtitle {
-    margin-top: 15px;
-    opacity: 0.6;
+.links {
+    margin-top: 40px;
 }
 
-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 80px 20px;
-}
-
-.card {
+.links a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 30px;
     border: 1px solid #00eaff;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    margin-top: 30px;
-    transition: 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 0 30px #00eaff;
-    transform: translateY(-6px);
-}
-
-h2 {
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #00eaff;
-}
-
-button {
-    margin-top: 25px;
-    padding: 12px 35px;
-    background: transparent;
-    border: 1px solid #00eaff;
+    text-decoration: none;
     color: #00eaff;
-    cursor: pointer;
     transition: 0.3s ease;
 }
 
-button:hover {
+.links a:hover {
     background: #00eaff;
     color: black;
     box-shadow: 0 0 25px #00eaff;
 }
-
-footer {
-    padding: 40px 20px;
-    border-top: 1px solid #00eaff;
-    opacity: 0.5;
-}
 </style>
 </head>
-
 <body>
 
-<header>
+<div id="scrollIndicator"></div>
+<canvas id="bg"></canvas>
+
+<section>
     <h1>S0l0pp</h1>
-    <p class="subtitle">Independent. Focused. Evolving.</p>
-</header>
-
-<section>
-    <h2>IDENTITY</h2>
-    <div class="card">
-        <p>
-            15 years old. Self-built. No dependence.
-            Improving body, mind, and skill.
-            Long-term vision > short-term dopamine.
-        </p>
+    <div class="links">
+        <a href="https://steamcommunity.com/id/S0l0pp/" target="_blank">Steam</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+        <a href="#">Discord: italiannationalist</a>
     </div>
 </section>
 
 <section>
-    <h2>BUILDING</h2>
-    <div class="card">
-        <p>⚡ Coding & System Design</p>
-        <p>🏋️ Physical Discipline</p>
-        <p>📈 Long-Term Wealth Strategy</p>
-        <p>🎮 Creative Projects</p>
-        <button onclick="alert('Progress Increasing...')">
-            Check Progress
-        </button>
-    </div>
+    <h2>Digital Presence</h2>
 </section>
 
 <section>
-    <h2>MISSION</h2>
-    <div class="card">
-        <p>
-            Control impulses.  
-            Build consistency.  
-            Become dangerous in silence.
-        </p>
-    </div>
+    <h2>Projects</h2>
 </section>
 
-<footer>
-    <p>© 2026 S0l0pp | Private System</p>
-</footer>
+<script>
+/* Scroll Indicator */
+window.onscroll = function() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (winScroll / height) * 100;
+    document.getElementById("scrollIndicator").style.height = scrolled + "%";
+};
+
+/* Fade-in animation */
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+sections.forEach(section => observer.observe(section));
+
+/* Animated Particle Background */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 120; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#00eaff";
+
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
 
 </body>
 </html>
