@@ -1,12 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML5 Boilerplate</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEON VOID</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Orbitron', sans-serif;
+        background: black;
+        color: #00f7ff;
+        overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+        content: "";
+        position: fixed;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, #001f3f 0%, #000000 70%);
+        animation: rotateBg 20s linear infinite;
+        z-index: -1;
+    }
+
+    @keyframes rotateBg {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    header {
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        animation: glitch 1.5s infinite;
+    }
+
+    @keyframes glitch {
+        0% { text-shadow: 2px 2px #ff00ff; }
+        25% { text-shadow: -2px -2px #00ffff; }
+        50% { text-shadow: 2px -2px #ff00ff; }
+        75% { text-shadow: -2px 2px #00ffff; }
+        100% { text-shadow: 2px 2px #ff00ff; }
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: #00f7ff;
+        text-decoration: none;
+        border: 1px solid #00f7ff;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        background: #00f7ff;
+        color: black;
+        box-shadow: 0 0 15px #00f7ff;
+    }
+
+    section {
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+    .card {
+        border: 1px solid #00f7ff;
+        padding: 30px;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 600px;
+        transition: 0.4s;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00f7ff;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 25px;
+        background: transparent;
+        border: 1px solid #00f7ff;
+        color: #00f7ff;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #00f7ff;
+        color: black;
+        box-shadow: 0 0 15px #00f7ff;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #00f7ff;
+        margin-top: 50px;
+    }
+</style>
 </head>
+
 <body>
-    <h1>I RAPE NIGGER www.pornhub.com</h1>
+
+<header>
+    <h1>NEON VOID</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#systems">Systems</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="about">
+    <h2>ENTER THE FUTURE</h2>
+    <div class="card">
+        <p>Welcome to the digital frontier. A cyberpunk-inspired interface built for the next generation of explorers.</p>
+        <button onclick="alert('Initializing Quantum Protocol...')">Initialize</button>
+    </div>
+</section>
+
+<section id="systems">
+    <h2>CORE SYSTEMS</h2>
+    <div class="card">
+        <p>⚡ Quantum AI Engine</p>
+        <p>🌌 Deep Space Navigation</p>
+        <p>🔐 Neural Network Security</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>TRANSMISSION</h2>
+    <div class="card">
+        <p>Signal us across the void.</p>
+        <button onclick="alert('Signal Sent Successfully.')">Send Signal</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2099 NEON VOID | All Systems Operational</p>
+</footer>
+
 </body>
 </html>
