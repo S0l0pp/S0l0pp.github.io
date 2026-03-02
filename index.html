@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Italia Sovrana</title>
+<title>Italia Rivoluzionaria</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
 
 * {
     margin: 0;
@@ -15,177 +15,204 @@
 }
 
 body {
-    font-family: 'Orbitron', sans-serif;
-    background: #000;
-    color: #ff0000; /* Red for Italian nationalism */
+    font-family: 'Montserrat', sans-serif;
+    color: white;
     overflow-x: hidden;
+    background: linear-gradient(
+        to bottom,
+        #006633 0%,
+        #006633 33%,
+        #ffffff 33%,
+        #ffffff 66%,
+        #cc0000 66%,
+        #cc0000 100%
+    );
+    background-attachment: fixed;
 }
 
-::-webkit-scrollbar { width: 0; }
-
-#scrollIndicator {
-    position: fixed;
-    right: 15px;
-    top: 0;
-    width: 4px;
-    background: #ff0000;
-    box-shadow: 0 0 15px #ff0000;
-    z-index: 1000;
-    transition: height 0.1s;
-}
-
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+.overlay {
+    background: rgba(0,0,0,0.7);
+    min-height: 100vh;
+    width: 100%;
 }
 
 section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    padding: 100px 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-}
-section.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 h1 {
+    font-family: 'Playfair Display', serif;
     font-size: 4rem;
-    letter-spacing: 6px;
-    text-shadow: 0 0 20px #ff0000;
+    letter-spacing: 4px;
+    text-shadow: 0 0 25px red;
 }
 
-p.bio {
-    max-width: 650px;
-    margin-top: 20px;
-    line-height: 1.5;
-    color: #ff6666;
-}
-
-.links a {
-    margin: 15px;
-    padding: 12px 30px;
-    border: 1px solid #ff0000;
-    text-decoration: none;
-    color: #ff0000;
-    transition: 0.3s ease;
-}
-.links a:hover {
-    background: #ff0000;
-    color: black;
-    box-shadow: 0 0 25px #ff0000;
-}
-
-.card {
-    border: 1px solid #ff0000;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 30px 40px;
-    margin-top: 30px;
-    transition: 0.3s ease;
-}
-.card:hover {
-    box-shadow: 0 0 30px #ff0000;
-    transform: translateY(-6px);
-}
 h2 {
     margin-bottom: 20px;
-    text-shadow: 0 0 10px #ff0000;
+    font-size: 2rem;
+}
+
+p {
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+button {
+    padding: 12px 25px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: white;
+    color: black;
+}
+
+input, textarea {
+    padding: 10px;
+    width: 250px;
+    margin: 10px;
+    border: none;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+}
+
+#adminPanel {
+    display: none;
+    margin-top: 40px;
+}
+
+.post {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-left: 4px solid red;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 30px;
+    text-align: center;
+    font-size: 0.9rem;
 }
 </style>
 </head>
 <body>
 
-<div id="scrollIndicator"></div>
-<canvas id="bg"></canvas>
+<div class="overlay">
 
 <section>
-    <h1>Italia Sovrana</h1>
-    <p class="bio">
-        Difendiamo la nostra identità, cultura e tradizione.  
-        Onore, forza e patriottismo sono i valori che guidano il nostro cammino.  
-        Uniti sotto il tricolore, per un'Italia fiera e indipendente.
+    <h1>S0l0pp</h1>
+    <p>
+        Voce rivoluzionaria. Spirito indipendente.  
+        Determinazione, disciplina e identità.  
+        Non seguo il sistema — lo ridefinisco.
     </p>
-    <div class="links">
-        <a href="#" target="_blank">Programma Nazionale</a>
-        <a href="#" target="_blank">Contatti</a>
-    </div>
 </section>
 
 <section>
-    <h2>Valori Fondamentali</h2>
-    <div class="card">
-        <p>🇮🇹 Patria e Identità</p>
-        <p>⚔️ Difesa della Tradizione</p>
-        <p>🌿 Promozione della Cultura Italiana</p>
-    </div>
+    <h2>Manifesto</h2>
+    <p>
+        Credo in una nazione forte, sovrana e consapevole della propria cultura.
+        La rivoluzione inizia dalla mente, continua con l'azione.
+    </p>
 </section>
 
 <section>
-    <h2>Attività</h2>
-    <div class="card">
-        <p>Raduni e Manifestazioni</p>
-        <p>Eventi Culturali e Storici</p>
-        <p>Progetti di Educazione Patriottica</p>
+    <h2>Comunicazioni</h2>
+    <div id="posts"></div>
+</section>
+
+<section>
+    <h2>Login Amministratore</h2>
+    <input type="text" id="username" placeholder="Nome">
+    <br>
+    <input type="password" id="password" placeholder="Password">
+    <br>
+    <button onclick="login()">Accedi</button>
+
+    <div id="adminPanel">
+        <h3>Nuovo Post</h3>
+        <textarea id="postContent" placeholder="Scrivi il tuo messaggio..."></textarea>
+        <br>
+        <button onclick="addPost()">Pubblica</button>
     </div>
 </section>
+
+<footer>
+Italia • Identità • Determinazione
+</footer>
+
+</div>
 
 <script>
-window.onscroll = function() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
-    document.getElementById("scrollIndicator").style.height = scrolled + "%";
-};
 
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-    });
-});
-sections.forEach(section => observer.observe(section));
+// SHA-256 hash of "Aristotele.003"
+const storedUser = "S0l0pp";
+const storedHash = "a6b9a9f4b7b2f5b0eaa4c8b0cfd2a63b4b6ed2e1d9f7a1bb0f6d4b1a9f98d6a3";
 
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let particles = [];
-for (let i = 0; i < 140; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speedX: (Math.random() - 0.5) * 0.6,
-        speedY: (Math.random() - 0.5) * 0.6
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const hashed = await sha256(pass);
+
+    if(user === storedUser && hashed === storedHash) {
+        document.getElementById("adminPanel").style.display = "block";
+        alert("Accesso consentito.");
+    } else {
+        alert("Credenziali errate.");
+    }
+}
+
+function addPost() {
+    const content = document.getElementById("postContent").value;
+    if(content.trim() === "") return;
+
+    const post = {
+        text: content,
+        date: new Date().toLocaleString()
+    };
+
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    posts.unshift(post);
+    localStorage.setItem("posts", JSON.stringify(posts));
+    document.getElementById("postContent").value = "";
+    loadPosts();
+}
+
+function loadPosts() {
+    const postsDiv = document.getElementById("posts");
+    postsDiv.innerHTML = "";
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+    posts.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "post";
+        div.innerHTML = `<strong>${p.date}</strong><br>${p.text}`;
+        postsDiv.appendChild(div);
     });
 }
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#ff0000";
-    particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-    });
-    requestAnimationFrame(animate);
-}
-animate();
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+
+loadPosts();
+
 </script>
 
 </body>
