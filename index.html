@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Italia Rivoluzionaria</title>
+<title>S0l0pp | Rivoluzione</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
@@ -18,91 +18,117 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: white;
     overflow-x: hidden;
-    background: linear-gradient(
-        to bottom,
-        #006633 0%,
-        #006633 33%,
-        #ffffff 33%,
-        #ffffff 66%,
-        #cc0000 66%,
-        #cc0000 100%
-    );
-    background-attachment: fixed;
+    background: black;
 }
 
+/* Animated tricolor gradient */
+.background {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        #006633,
+        #ffffff,
+        #cc0000,
+        #006633
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -3;
+    filter: brightness(0.5);
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Dark overlay */
 .overlay {
-    background: rgba(0,0,0,0.7);
-    min-height: 100vh;
+    position: fixed;
     width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+    z-index: -2;
+}
+
+/* Light beams */
+.light {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        60deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 60px
+    );
+    animation: moveLight 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveLight {
+    from { transform: translateX(0); }
+    to { transform: translateX(-200px); }
 }
 
 section {
-    padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 40px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    letter-spacing: 4px;
-    text-shadow: 0 0 25px red;
+    font-size: 4.5rem;
+    letter-spacing: 6px;
+    text-shadow: 0 0 30px red;
 }
 
 h2 {
-    margin-bottom: 20px;
     font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px white;
 }
 
 p {
     max-width: 700px;
-    margin: 20px auto;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-top: 20px;
 }
 
-button {
-    padding: 12px 25px;
+.button {
+    margin-top: 30px;
+    padding: 12px 30px;
     border: 2px solid white;
-    background: transparent;
+    text-decoration: none;
     color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 15px;
+    transition: 0.3s ease;
 }
 
-button:hover {
+.button:hover {
     background: white;
     color: black;
-}
-
-input, textarea {
-    padding: 10px;
-    width: 250px;
-    margin: 10px;
-    border: none;
-}
-
-textarea {
-    width: 300px;
-    height: 100px;
-}
-
-#adminPanel {
-    display: none;
-    margin-top: 40px;
-}
-
-.post {
-    background: rgba(0,0,0,0.6);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-left: 4px solid red;
+    box-shadow: 0 0 25px white;
 }
 
 footer {
-    margin-top: 80px;
-    padding: 30px;
+    padding: 40px;
     text-align: center;
     font-size: 0.9rem;
 }
@@ -110,109 +136,55 @@ footer {
 </head>
 <body>
 
-<div class="overlay">
+<div class="background"></div>
+<div class="overlay"></div>
+<div class="light"></div>
 
 <section>
     <h1>S0l0pp</h1>
     <p>
-        Voce rivoluzionaria. Spirito indipendente.  
-        Determinazione, disciplina e identità.  
-        Non seguo il sistema — lo ridefinisco.
+        Spirito rivoluzionario. Disciplina. Visione.
+        Non seguo il sistema — costruisco il mio.
+        Identità, forza e determinazione guidano ogni passo.
     </p>
+    <a href="#manifesto" class="button">Scopri di più</a>
 </section>
 
-<section>
+<section id="manifesto">
     <h2>Manifesto</h2>
     <p>
-        Credo in una nazione forte, sovrana e consapevole della propria cultura.
-        La rivoluzione inizia dalla mente, continua con l'azione.
+        Credo in una nazione consapevole delle proprie radici.
+        La rivoluzione non è caos.
+        È volontà, carattere e direzione.
+        Il cambiamento nasce dall'individuo.
     </p>
 </section>
 
 <section>
-    <h2>Comunicazioni</h2>
-    <div id="posts"></div>
-</section>
-
-<section>
-    <h2>Login Amministratore</h2>
-    <input type="text" id="username" placeholder="Nome">
-    <br>
-    <input type="password" id="password" placeholder="Password">
-    <br>
-    <button onclick="login()">Accedi</button>
-
-    <div id="adminPanel">
-        <h3>Nuovo Post</h3>
-        <textarea id="postContent" placeholder="Scrivi il tuo messaggio..."></textarea>
-        <br>
-        <button onclick="addPost()">Pubblica</button>
-    </div>
+    <h2>Visione</h2>
+    <p>
+        Ordine. Cultura. Identità.
+        Un futuro costruito con disciplina e ambizione.
+        La vera forza è nella mente e nell'azione.
+    </p>
 </section>
 
 <footer>
 Italia • Identità • Determinazione
 </footer>
 
-</div>
-
 <script>
+const sections = document.querySelectorAll("section");
 
-// SHA-256 hash of "Aristotele.003"
-const storedUser = "S0l0pp";
-const storedHash = "a6b9a9f4b7b2f5b0eaa4c8b0cfd2a63b4b6ed2e1d9f7a1bb0f6d4b1a9f98d6a3";
-
-async function sha256(message) {
-    const msgBuffer = new TextEncoder().encode(message);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-}
-
-async function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-    const hashed = await sha256(pass);
-
-    if(user === storedUser && hashed === storedHash) {
-        document.getElementById("adminPanel").style.display = "block";
-        alert("Accesso consentito.");
-    } else {
-        alert("Credenziali errate.");
-    }
-}
-
-function addPost() {
-    const content = document.getElementById("postContent").value;
-    if(content.trim() === "") return;
-
-    const post = {
-        text: content,
-        date: new Date().toLocaleString()
-    };
-
-    let posts = JSON.parse(localStorage.getItem("posts")) || [];
-    posts.unshift(post);
-    localStorage.setItem("posts", JSON.stringify(posts));
-    document.getElementById("postContent").value = "";
-    loadPosts();
-}
-
-function loadPosts() {
-    const postsDiv = document.getElementById("posts");
-    postsDiv.innerHTML = "";
-    let posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-    posts.forEach(p => {
-        const div = document.createElement("div");
-        div.className = "post";
-        div.innerHTML = `<strong>${p.date}</strong><br>${p.text}`;
-        postsDiv.appendChild(div);
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
     });
-}
+});
 
-loadPosts();
-
+sections.forEach(section => observer.observe(section));
 </script>
 
 </body>
