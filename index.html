@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S0l0pp | Rivoluzione</title>
+<title>S0l0pp Board</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -15,176 +15,206 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    background: black;
-}
-
-/* Animated tricolor gradient */
-.background {
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        120deg,
-        #006633,
-        #ffffff,
-        #cc0000,
-        #006633
-    );
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(-45deg, #0a0a0a, #111, #1a1a1a, #000);
     background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    z-index: -3;
-    filter: brightness(0.5);
+    animation: bgMove 20s ease infinite;
+    color: #ddd;
+    min-height: 100vh;
 }
 
-@keyframes gradientMove {
+@keyframes bgMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Dark overlay */
-.overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
-    z-index: -2;
-}
-
-/* Light beams */
-.light {
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-        60deg,
-        rgba(255,255,255,0.03) 0px,
-        rgba(255,255,255,0.03) 2px,
-        transparent 2px,
-        transparent 60px
-    );
-    animation: moveLight 20s linear infinite;
-    z-index: -1;
-}
-
-@keyframes moveLight {
-    from { transform: translateX(0); }
-    to { transform: translateX(-200px); }
-}
-
-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+header {
+    background: #111;
+    padding: 20px;
     text-align: center;
-    padding: 40px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
-}
-
-section.show {
-    opacity: 1;
-    transform: translateY(0);
+    border-bottom: 2px solid #333;
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
-    letter-spacing: 6px;
-    text-shadow: 0 0 30px red;
-}
-
-h2 {
     font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-box {
+    background: #111;
+    padding: 20px;
+    border: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #000;
+    border: 1px solid #333;
+    color: #ddd;
+}
+
+button {
+    padding: 8px 15px;
+    background: #222;
+    border: 1px solid #444;
+    color: #ddd;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+.thread {
+    background: #111;
+    padding: 15px;
+    border: 1px solid #333;
     margin-bottom: 20px;
-    text-shadow: 0 0 15px white;
 }
 
-p {
-    max-width: 700px;
-    line-height: 1.7;
-    margin-top: 20px;
+.post {
+    margin-top: 10px;
+    padding: 10px;
+    background: #0d0d0d;
+    border-left: 3px solid #444;
 }
 
-.button {
-    margin-top: 30px;
-    padding: 12px 30px;
-    border: 2px solid white;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease;
-}
-
-.button:hover {
-    background: white;
-    color: black;
-    box-shadow: 0 0 25px white;
-}
-
-footer {
-    padding: 40px;
-    text-align: center;
-    font-size: 0.9rem;
+.meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5px;
 }
 </style>
 </head>
 <body>
 
-<div class="background"></div>
-<div class="overlay"></div>
-<div class="light"></div>
+<header>
+    <h1>/s0/ - S0l0pp Board</h1>
+</header>
 
-<section>
-    <h1>S0l0pp</h1>
-    <p>
-        Spirito rivoluzionario. Disciplina. Visione.
-        Non seguo il sistema — costruisco il mio.
-        Identità, forza e determinazione guidano ogni passo.
-    </p>
-    <a href="#manifesto" class="button">Scopri di più</a>
-</section>
+<div class="container">
 
-<section id="manifesto">
-    <h2>Manifesto</h2>
-    <p>
-        Credo in una nazione consapevole delle proprie radici.
-        La rivoluzione non è caos.
-        È volontà, carattere e direzione.
-        Il cambiamento nasce dall'individuo.
-    </p>
-</section>
+<div class="form-box">
+    <h3>Create Thread</h3>
+    <input type="text" id="name" placeholder="Name (leave empty = Anonymous)">
+    <input type="text" id="title" placeholder="Thread title">
+    <textarea id="content" placeholder="Write something..."></textarea>
+    <button onclick="createThread()">Post Thread</button>
+</div>
 
-<section>
-    <h2>Visione</h2>
-    <p>
-        Ordine. Cultura. Identità.
-        Un futuro costruito con disciplina e ambizione.
-        La vera forza è nella mente e nell'azione.
-    </p>
-</section>
+<div id="board"></div>
 
-<footer>
-Italia • Identità • Determinazione
-</footer>
+</div>
 
 <script>
-const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
+function getStoredName() {
+    return localStorage.getItem("persistentName") || "";
+}
+
+document.getElementById("name").value = getStoredName();
+
+function saveName(name) {
+    if(name.trim() !== "") {
+        localStorage.setItem("persistentName", name);
+    }
+}
+
+function createThread() {
+    const nameInput = document.getElementById("name");
+    const title = document.getElementById("title").value.trim();
+    const content = document.getElementById("content").value.trim();
+    let name = nameInput.value.trim() || "Anonymous";
+
+    if(title === "" || content === "") return;
+
+    saveName(nameInput.value);
+
+    let threads = JSON.parse(localStorage.getItem("threads")) || [];
+
+    const thread = {
+        id: Date.now(),
+        title,
+        posts: [{
+            name,
+            content,
+            date: new Date().toLocaleString()
+        }]
+    };
+
+    threads.unshift(thread);
+    localStorage.setItem("threads", JSON.stringify(threads));
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
+    loadBoard();
+}
+
+function reply(threadId) {
+    const replyContent = document.getElementById("reply-"+threadId).value.trim();
+    const nameInput = document.getElementById("name");
+    let name = nameInput.value.trim() || "Anonymous";
+
+    if(replyContent === "") return;
+
+    saveName(nameInput.value);
+
+    let threads = JSON.parse(localStorage.getItem("threads")) || [];
+    const thread = threads.find(t => t.id === threadId);
+
+    thread.posts.push({
+        name,
+        content: replyContent,
+        date: new Date().toLocaleString()
     });
-});
 
-sections.forEach(section => observer.observe(section));
+    localStorage.setItem("threads", JSON.stringify(threads));
+    loadBoard();
+}
+
+function loadBoard() {
+    const board = document.getElementById("board");
+    board.innerHTML = "";
+
+    let threads = JSON.parse(localStorage.getItem("threads")) || [];
+
+    threads.forEach(thread => {
+        const threadDiv = document.createElement("div");
+        threadDiv.className = "thread";
+
+        threadDiv.innerHTML = `<strong>${thread.title}</strong>`;
+
+        thread.posts.forEach(post => {
+            const postDiv = document.createElement("div");
+            postDiv.className = "post";
+            postDiv.innerHTML = `
+                <div class="meta">${post.name} | ${post.date}</div>
+                <div>${post.content}</div>
+            `;
+            threadDiv.appendChild(postDiv);
+        });
+
+        threadDiv.innerHTML += `
+            <textarea id="reply-${thread.id}" placeholder="Reply..."></textarea>
+            <button onclick="reply(${thread.id})">Reply</button>
+        `;
+
+        board.appendChild(threadDiv);
+    });
+}
+
+loadBoard();
+
 </script>
 
 </body>
